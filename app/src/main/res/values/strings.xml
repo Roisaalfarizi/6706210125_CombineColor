@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">CombineColors</string>
+    <string name="Merah">Hasil : Merah</string>
+    <string name="Kuning">Hasil : Kuning</string>
+    <string name="Oren">Hasil : Oren</string>
+    <string name="Biru">Hasil : Biru</string>
+    <string name="Hijau_muda">Hasil : Hijau Muda</string>
+    <string name="Hijau">Hasil : Hijau</string>
+    <string name="Krem">Hasil : Krem</string>
+    <string name="Abu">Hasil : Abu-abu</string>
+    <string name="Biru_tua">Hasil : Biru tua</string>
+    <string name="Coklat">Hasil : Coklat</string>
+    <string name="Ungu">Hasil : Ungu</string>
+    <string name="Pink">Hasil : Pink</string>
 </resources>
