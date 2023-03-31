@@ -11,5 +11,14 @@
     <string name="Biru_tua">Hasil : Biru tua</string>
     <string name="Coklat">Hasil : Coklat</string>
     <string name="Ungu">Hasil : Ungu</string>
-    <string name="Pink">Hasil : Pink</string>
+    <string name="Pink">Hasil : Merah Muda</string>
+    <string name="warnaEmpty1">Hasil : warna pada input pertama tidak tersedia</string>
+    <string name="warnaEmpty2">Hasil : warna pada input Kedua tidak boleh kosong!</string>
+    <string name="outStock">Pastikan isi dengan warna yang tersedia</string>
+    <string name="Empty">Tidak Tersedia </string>
+    <string name="Warna1_invalid">input tidak boleh kosong.</string>
+    <string name="Warna2_invalid">input kedua tidak boleh kosong.</string>
+    <string name="inputNumber">Input harus menggunakan Character atau Huruf contoh : "Merah".</string>
+
+    <color name="Blue">#0E99E3</color>
 </resources>
