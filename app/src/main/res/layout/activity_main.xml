@@ -1,122 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ECD50D"
-    android:backgroundTint="#FFEB3B"
+    android:visibility="visible"
     tools:context=".MainActivity">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/Hasil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Hasil : "
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/input2"
-        app:layout_constraintStart_toStartOf="@+id/Input1"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="Masukan 2 Jenis Warna yang akan di campurkan lalu lihat hasilnya. Warna Yang Tersedia : Merah, Kuning, Hijau, Biru, Ungu"
-        android:textColor="#040303"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:text="Warna Pertama"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="@+id/Input1"
-        app:layout_constraintStart_toStartOf="@+id/Input1"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:text="Warna Kedua"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="@+id/input2"
-        app:layout_constraintStart_toStartOf="@+id/input2"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Input1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="24dp"
-        app:boxBackgroundColor="#FFFFFF"
-        app:layout_constraintEnd_toStartOf="@+id/input2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Warna1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="Contoh : Merah" />
-
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="16dp"
-        app:boxBackgroundColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/Input1"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toEndOf="@+id/Input1"
-        app:layout_constraintTop_toTopOf="@+id/Input1">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Warna2"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/Hasil"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Contoh : Kuning" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="16dp"
+            android:text="Hasil : "
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/input2"
+            app:layout_constraintStart_toStartOf="@+id/Input1"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#373535"
-        android:text="Combine"
-        android:textColor="#FFEB3B"
-        app:iconTint="#FFEB3B"
-        app:layout_constraintEnd_toEndOf="@+id/input2"
-        app:layout_constraintStart_toStartOf="@+id/Input1"
-        app:layout_constraintTop_toBottomOf="@+id/Input1" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Masukan 2 Jenis Warna yang akan di campurkan lalu lihat hasilnya. Warna Yang Tersedia : Merah, Kuning, Hijau, Biru, Ungu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Warna Pertama"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/Input1"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Warna Kedua"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/textView2"
+            app:layout_constraintStart_toStartOf="@+id/input2"
+            app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Input1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="16dp"
+
+            app:boxStrokeColor="#888888"
+            app:hintTextColor="#7C7C7C"
+            app:layout_constraintEnd_toStartOf="@+id/input2"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:startIconTint="#2E2E2E">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Warna1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Contoh : Merah" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="16dp"
+
+            app:boxStrokeColor="#888888"
+            app:hintTextColor="#7C7C7C"
+            app:layout_constraintBottom_toBottomOf="@+id/Input1"
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintStart_toEndOf="@+id/Input1"
+            app:layout_constraintTop_toTopOf="@+id/Input1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Warna2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contoh : Kuning" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#FFEB3B"
+            android:text="Combine"
+            android:textColor="#000000"
+            app:iconTint="#FDFDFD"
+            app:layout_constraintEnd_toEndOf="@+id/input2"
+            app:layout_constraintStart_toStartOf="@+id/Input1"
+            app:layout_constraintTop_toBottomOf="@+id/Input1" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

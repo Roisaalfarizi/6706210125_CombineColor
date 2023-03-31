@@ -20,5 +20,18 @@
     <string name="Warna2_invalid">input kedua tidak boleh kosong.</string>
     <string name="inputNumber">Input harus menggunakan Character atau Huruf contoh : "Merah".</string>
 
+    <string name="merah">Hasil : Merah</string>
+    <string name="kuning">Hasil : Kuning</string>
+    <string name="oren">Hasil : Oren</string>
+    <string name="biru">Hasil : Biru</string>
+    <string name="hijau_muda">Hasil : Hijau Muda</string>
+    <string name="hijau">Hasil : Hijau</string>
+    <string name="krem">Hasil : Krem</string>
+    <string name="abu">Hasil : Abu-abu</string>
+    <string name="biru_tua">Hasil : Biru tua</string>
+    <string name="coklat">Hasil : Coklat</string>
+    <string name="ungu">Hasil : Ungu</string>
+    <string name="pink">Hasil : Merah Muda</string>
+
     <color name="Blue">#0E99E3</color>
 </resources>
