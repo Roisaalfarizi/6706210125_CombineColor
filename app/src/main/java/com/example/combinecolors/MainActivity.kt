@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
 import com.example.combinecolors.databinding.ActivityMainBinding
+import com.example.combinecolors.model.Hasil
+import com.example.combinecolors.model.Warna
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -12,119 +14,97 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.button.setOnClickListener { CombineColor() }
+        binding.button.setOnClickListener { combineColor() }
     }
-    private fun CombineColor() {
+
+    private fun combineColor() {
         val warna1 = binding.Warna1.text.toString()
-        if(TextUtils.isEmpty(warna1)){
-            Toast.makeText(this, R.string.Warna1_invalid, Toast.LENGTH_LONG).show()
-            return
-        }else if(TextUtils.isDigitsOnly(warna1)){
-            Toast.makeText(this, R.string.inputNumber, Toast.LENGTH_LONG).show()
-            return
-        }else if (warna1 != "Merah" && warna1 != "Kuning" && warna1 != "Hijau" && warna1 != "Ungu" && warna1 != "Biru" && warna1 != "merah" && warna1 != "kuning" && warna1 != "hijau" && warna1 != "ungu" && warna1 != "biru"){
-            Toast.makeText(this, R.string.outStock, Toast.LENGTH_LONG).show()
-            return
-        }
-
         val warna2 = binding.Warna2.text.toString()
-        if(TextUtils.isEmpty(warna2)){
-            Toast.makeText(this, R.string.Warna2_invalid, Toast.LENGTH_LONG).show()
+
+        if (TextUtils.isEmpty(warna1)) {
+            showToast(R.string.Warna1_invalid)
             return
-        }else if(TextUtils.isDigitsOnly(warna1)){
-            Toast.makeText(this, R.string.inputNumber, Toast.LENGTH_LONG).show()
+        } else if (TextUtils.isDigitsOnly(warna1)) {
+            showToast(R.string.inputNumber)
+            return
+        } else if (!isValidColor(warna1)) {
+            showToast(R.string.outStock)
             return
         }
-        else if ( warna2 != "Merah" && warna2 != "Kuning" && warna2 != "Hijau" && warna2 != "Ungu" && warna2 != "Biru" &&
-            warna2 != "merah" && warna2 != "kuning" && warna2 != "hijau" && warna2 != "ungu" && warna2 != "biru"){
-            Toast.makeText(this, R.string.outStock, Toast.LENGTH_LONG).show()
+
+        if (TextUtils.isEmpty(warna2)) {
+            showToast(R.string.Warna2_invalid)
             return
-
-
-        }else if(warna1 == "Merah" && warna2 == "Kuning"|| warna1 == "Kuning" && warna2 == "Merah"){
-            binding.Hasil.text = getString(R.string.Oren)
-        }else if(warna1 == "Merah" && warna2 == "Hijau"|| warna1 == "Hijau" && warna2 == "Merah"){
-            binding.Hasil.text = getString(R.string.Coklat)
-        }else if(warna1 == "Merah" && warna2 == "Biru"|| warna1 == "Biru" && warna2 == "Merah"){
-            binding.Hasil.text = getString(R.string.Ungu)
-        }else if(warna1 == "Merah" && warna2 == "Ungu"|| warna1 == "Ungu" && warna2 == "Merah"){
-            binding.Hasil.text = getString(R.string.Pink)
-        }else if(warna1 == "Merah" && warna2 == "Merah"){
-            binding.Hasil.text = getString(R.string.Merah)
+        } else if (TextUtils.isDigitsOnly(warna2)) {
+            showToast(R.string.inputNumber)
+            return
+        } else if (!isValidColor(warna2)) {
+            showToast(R.string.outStock)
+            return
         }
+        val result = combineColors(warna1, warna2)
+        setDisplayResources(result)
 
+    }
 
+    private fun showToast(messageResId: Int) {
+        Toast.makeText(this, messageResId, Toast.LENGTH_LONG).show()
+    }
 
-        else if(warna1 == "Kuning" && warna2 == "Hijau"|| warna1 == "Hijau" && warna2 == "Kuning"){
-            binding.Hasil.text = getString(R.string.Hijau_muda)
-        }else if(warna1 == "Kuning" && warna2 == "Biru"|| warna1 == "Biru" && warna2 == "Kuning"){
-            binding.Hasil.text = getString(R.string.Hijau)
-        }else if(warna1 == "Kuning" && warna2 == "Ungu"|| warna1 == "Ungu" && warna2 == "Kuning"){
-            binding.Hasil.text = getString(R.string.Krem)
-        }else if(warna1 == "Kuning" && warna2 == "Kuning"){
-            binding.Hasil.text = getString(R.string.Kuning)
+    private fun isValidColor(color: String): Boolean {
+        val validColors = listOf(
+            "Merah",
+            "Kuning",
+            "Hijau",
+            "Ungu",
+            "Biru",
+            "merah",
+            "kuning",
+            "hijau",
+            "ungu",
+            "biru"
+        )
+        return validColors.contains(color)
+    }
+
+    private fun combineColors(color1: String, color2: String): Warna {
+        return when {
+            (color1 == "Merah" && color2 == "Kuning") || (color1 == "Kuning" && color2 == "Merah") -> Warna.Oren
+            (color1 == "Merah" && color2 == "Hijau") || (color1 == "Hijau" && color2 == "Merah") -> Warna.Coklat
+            (color1 == "Merah" && color2 == "Biru") || (color1 == "Biru" && color2 == "Merah") -> Warna.Ungu
+            (color1 == "Merah" && color2 == "Ungu") || (color1 == "Ungu" && color2 == "Merah") -> Warna.Pink
+            color1 == "Merah" && color2 == "Merah" -> Warna.Merah
+            (color1 == "Kuning" && color2 == "Hijau") || (color1 == "Hijau" && color2 == "Kuning") -> Warna.Hijau_Muda
+            (color1 == "Kuning" && color2 == "Biru") || (color1 == "Biru" && color2 == "Kuning") -> Warna.Hijau
+            (color1 == "Kuning" && color2 == "Ungu") || (color1 == "Ungu" && color2 == "Kuning") -> Warna.Krem
+            color1 == "Kuning" && color2 == "Kuning" -> Warna.Kuning
+            (color1 == "Hijau" && color2 == "Biru") || (color1 == "Biru" && color2 == "Hijau") -> Warna.Hijau_Muda
+            (color1 == "Hijau" && color2 == "Ungu") || (color1 == "Ungu" && color2 == "Hijau") -> Warna.Abu
+            color1 == "Hijau" && color2 == "Hijau" -> Warna.Hijau
+            (color1 == "Biru" && color2 == "Ungu") || (color1 == "Ungu" && color2 == "Biru") -> Warna.Biru_tua
+            color1 == "Biru" && color2 == "Biru" -> Warna.Biru
+            color1 == "Ungu" && color2 == "Ungu" -> Warna.Ungu
+            else -> throw IllegalArgumentException("Invalid color combination")
         }
+    }
 
-
-        else if(warna1 == "Hijau" && warna2 == "Biru"|| warna1 == "Biru" && warna2 == "Hijau"){
-            binding.Hasil.text = getString(R.string.Hijau_muda)
-        }else if(warna1 == "Hijau" && warna2 == "Ungu"|| warna1 == "Ungu" && warna2 == "Hijau"){
-            binding.Hasil.text = getString(R.string.Abu)
-        }else if(warna1 == "Hijau" && warna2 == "Hijau"){
-            binding.Hasil.text = getString(R.string.Hijau)
+    private fun setDisplayResources(warna: Warna) {
+        val displayStringRes = when (warna) {
+            Warna.Oren -> R.string.oren
+            Warna.Coklat -> R.string.coklat
+            Warna.Ungu -> R.string.ungu
+            Warna.Pink -> R.string.pink
+            Warna.Merah -> R.string.merah
+            Warna.Hijau_Muda -> R.string.hijau_muda
+            Warna.Hijau -> R.string.hijau
+            Warna.Krem -> R.string.krem
+            Warna.Kuning -> R.string.kuning
+            Warna.Abu -> R.string.abu
+            Warna.Biru_tua -> R.string.biru_tua
+            Warna.Biru -> R.string.biru
+            Warna.Ungu -> R.string.ungu
         }
-
-        else if(warna1 == "Biru" && warna2 == "Ungu"|| warna1 == "Ungu" && warna2 == "Biru"){
-            binding.Hasil.text = getString(R.string.Biru_tua)
-        }else if(warna1 == "Biru" && warna2 == "Biru"){
-            binding.Hasil.text = getString(R.string.Biru)
-        }
-
-
-
-
-
-
-
-        //input Kecil
-
-        else if(warna1 == "merah" && warna2 == "kuning"|| warna1 == "kuning" && warna2 == "merah"){
-            binding.Hasil.text = getString(R.string.Oren)
-        }else if(warna1 == "merah" && warna2 == "hijau"|| warna1 == "hijau" && warna2 == "herah"){
-            binding.Hasil.text = getString(R.string.Coklat)
-        }else if(warna1 == "merah" && warna2 == "biru"|| warna1 == "biru" && warna2 == "merah"){
-            binding.Hasil.text = getString(R.string.Ungu)
-        }else if(warna1 == "merah" && warna2 == "ungu"|| warna1 == "ungu" && warna2 == "merah"){
-            binding.Hasil.text = getString(R.string.Pink)
-        }else if(warna1 == "merah" && warna2 == ",merah"){
-            binding.Hasil.text = getString(R.string.Merah)
-        }
-
-
-
-        else if(warna1 == "kuning" && warna2 == "hijau"|| warna1 == "hijau" && warna2 == "kuning"){
-            binding.Hasil.text = getString(R.string.Hijau_muda)
-        }else if(warna1 == "kuning" && warna2 == "biru"|| warna1 == "biru" && warna2 == "kuning"){
-            binding.Hasil.text = getString(R.string.Hijau)
-        }else if(warna1 == "kuning" && warna2 == "ungu"|| warna1 == "ungu" && warna2 == "kuning"){
-            binding.Hasil.text = getString(R.string.Krem)
-        }else if(warna1 == "kuning" && warna2 == "kuning"){
-            binding.Hasil.text = getString(R.string.Kuning)
-        }
-
-
-        else if(warna1 == "hijau" && warna2 == "biru"|| warna1 == "biru" && warna2 == "hijau"){
-            binding.Hasil.text = getString(R.string.Hijau_muda)
-        }else if(warna1 == "hijau" && warna2 == "ungu"|| warna1 == "ungu" && warna2 == "hijau"){
-            binding.Hasil.text = getString(R.string.Abu)
-        }else if(warna1 == "hijau" && warna2 == "hijau"){
-            binding.Hasil.text = getString(R.string.Hijau)
-        }
-
-        else if(warna1 == "biru" && warna2 == "ungu"|| warna1 == "ungu" && warna2 == "biru"){
-            binding.Hasil.text = getString(R.string.Biru_tua)
-        }else if(warna1 == "biru" && warna2 == "biru"){
-            binding.Hasil.text = getString(R.string.Biru)
-        }
+        val displayString = getString(displayStringRes)
+        binding.Hasil.text = displayString
     }
 }
